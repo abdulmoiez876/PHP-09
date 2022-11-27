@@ -3,7 +3,6 @@ session_start();
 include './config.php';
 if (isset($_SESSION['accessedId'])) {
     $deleteId = (int)$_SESSION['accessedId'];
-    echo $deleteId;
 
     $queryForPicPath = "SELECT picPath FROM employees WHERE employeeNumber=$deleteId";
     $execForPicPath = mysqli_query($connection, $queryForPicPath);

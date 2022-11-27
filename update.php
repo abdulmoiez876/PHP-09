@@ -4,7 +4,10 @@ include './config.php';
 
 if (isset($_SESSION['accessedId'])) {
     $id = $_SESSION['accessedId'];
-    
+
+    session_unset();
+    session_destroy();
+
     $query = "SELECT * FROM employees WHERE employeeNumber=$id";
     $exec = mysqli_query($connection, $query);
     $result = mysqli_fetch_assoc($exec);
