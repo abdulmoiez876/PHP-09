@@ -2,6 +2,11 @@
 include './config.php';
 $query = "SELECT e.employeeNumber as id, e.firstName AS employeeFName, e.lastName AS employeeLName, e.email AS employeeEmail, e.jobTitle AS employeeJobTitle, e.picPath AS picPath ,o.addressLine1 AS add1, o.addressLine2 AS add2, o.city AS city, o.state AS state, o.country AS country, r.firstName AS reportsFName, r.lastName AS reportsLName, r.jobTitle AS reportsJobTitle FROM employees e NATURAL JOIN offices o LEFT JOIN employees r ON (e.reportsTo=r.employeeNumber);";
 $exec = mysqli_query($connection, $query);
+
+if(isset($_POST['goBack'])) {
+    session_unset();
+    session_destroy();
+}
 ?>
 
 <!DOCTYPE html>
@@ -44,7 +49,7 @@ $exec = mysqli_query($connection, $query);
                             $imgPath = './assets/'.$imgPath;
                         }
                         ?>
-                        <form action="./update.php" method="post" style="display:inline-block; width:min-content;">
+                        <form action="./sessionId.php" method="post" style="display:inline-block; width:min-content;">
                             <input style="display: none" type="text" name="editId" value="<?php echo $result['id'] ?>">
                             <button name='editButton' type="submit" style="">
                                 <img src="<?php echo $imgPath?>" alt="user" height=60 width=60>

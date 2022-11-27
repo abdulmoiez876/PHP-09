@@ -70,6 +70,10 @@ if (isset($_POST['update'])) {
     $execUpdate = mysqli_query($connection, $queryUpdate);
     header('Location: ./lab9.php');
 }
+else {
+    // echo "Session Destroyed, Redirecting...";
+    // header('Location: ./lab9.php');
+}
 ?>
 
 <!DOCTYPE html>
