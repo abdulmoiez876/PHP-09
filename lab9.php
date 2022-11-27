@@ -71,10 +71,11 @@ $exec = mysqli_query($connection, $query);
                         ?>
                     </td>
                     <td>
-                        <form action="./update.php" method="post" style="display:inline-block; width:min-content;">
+                        <form action="./sessionId.php" method="post" style="display:inline-block; width:min-content;">
                             <input style="display: none" type="text" name="editId" value="<?php echo $result['id'] ?>">
                             <button name='editButton' type="submit">Edit</button>
                         </form>
+
                         <form action="./sessionId.php" method="post" style="display:inline-block; width:min-content;">
                             <input style="display: none" type="text" name="deleteId" value="<?php echo $result['id'] ?>">
                             <button name='deleteButton' type="submit">Delete</button>

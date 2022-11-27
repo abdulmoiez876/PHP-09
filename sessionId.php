@@ -6,4 +6,11 @@ if(isset($_POST['deleteButton'])) {
         header('Location: ./delete.php');
     }
 }
+else if(isset($_POST['editButton'])) {
+    $_SESSION['accessedId'] = $_POST['editId'];
+    if($_POST['editId']) {
+        echo $_SESSION['accessedId'];
+        header("Location: ./update.php");
+    }
+}
 ?>
