@@ -1,7 +1,9 @@
 <?php
+session_start();
 include './config.php';
-if (isset($_POST['deleteButton'])) {
-    $deleteId = (int)$_POST['deleteId'];
+if (isset($_SESSION['accessedId'])) {
+    $deleteId = (int)$_SESSION['accessedId'];
+    echo $deleteId;
 
     $queryForPicPath = "SELECT picPath FROM employees WHERE employeeNumber=$deleteId";
     $execForPicPath = mysqli_query($connection, $queryForPicPath);
@@ -25,6 +27,9 @@ if (isset($_POST['deleteButton'])) {
         $resultText.= "Failed to delete from database";
     }
     echo $resultText;
+
+    session_unset();
+    session_destroy();
 }
 ?>
 
